@@ -1,0 +1,18 @@
+version: "3.9"
+
+volumes:
+  vol-mbanking:
+
+services:
+  mbanking-postgres:
+    image: "postgres:16.3-bullseye"
+    container_name: "mbanking-postgres"
+    ports:
+      - "3000:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_USER: mbanking
+      POSTGRES_DB: db_mbanking
+    volumes:
+      - "vol-mbanking:/var/lib/postgresql/data"
